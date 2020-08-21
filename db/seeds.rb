@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# メインのサンプルユーザを一人作成する
+User.create!(name: "Default Admin", password: "kougakusai2020", password_confirmation: "kougakusai2020", admin: true)
