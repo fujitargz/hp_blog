@@ -19,9 +19,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user # 新しいユーザを作成した時点でログイン、これは不要かも
-      flash[:success] = "Welcome!"
-      redirect_to @user
+      flash[:success] = "ユーザを作成しました。"
+      redirect_to users_url
     else
       render 'new'
     end
@@ -50,7 +49,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :password, :password_confirmation)
+      params.require(:user).permit(:name, :password, :password_confirmation, :admin)
     end
 
     # beforeアクション

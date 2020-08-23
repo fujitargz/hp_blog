@@ -1,7 +1,6 @@
 <li id="article-<%= article.id %>">
 	<span class="user"><%= link_to article.user.name, article.user %></span>
-	<span class="subject"><%= article.subject %></span>
-	<span class="content"><%= article.content %></span>
+	<span class="subject"><%= link_to article.subject, article %></span>
 	<span class="timestamp">
 		Posted <%= time_ago_in_words(article.created_at) %> ago.
 		<% if current_user?(article.user) %>
