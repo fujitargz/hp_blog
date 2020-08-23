@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	has_many :articles, dependent: :destroy
   attr_accessor :remember_token
   validates :name, presence:true, length: {maximum: 50 }, uniqueness: true
   has_secure_password
@@ -34,4 +35,9 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+	# 試作feedの定義
+	def feed
+		Article.where("user_id = ?", id)
+	end
 end
