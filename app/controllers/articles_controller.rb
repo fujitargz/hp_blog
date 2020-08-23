@@ -6,13 +6,6 @@ class ArticlesController < ApplicationController
 		@articles = Article.paginate(page: params[:page])
 	end
 
-	def new
-		if logged_in?
-		@article = current_user.articles.build
-		@feed_items = current_user.feed.paginate(page: params[:page])
-		end
-	end
-
 	def create
 		@article = current_user.articles.build(article_params)
 		if @article.save
@@ -22,6 +15,21 @@ class ArticlesController < ApplicationController
 			@feed_items = current_user.feed.paginate(page: params[:page])
 			render 'articles#new'
 		end
+	end
+
+	def new
+		if logged_in?
+		@article = current_user.articles.build
+		@feed_items = current_user.feed.paginate(page: params[:page])
+		end
+	end
+
+	def edit
+		@article = Article.find(params[:id])
+	end
+
+	def show
+		@article = Article.find(params[:id])
 	end
 
 	def destroy

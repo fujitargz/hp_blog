@@ -1,0 +1,14 @@
+<% provide(:title, "Edit article") %>
+<h1>記事を編集</h1>
+
+<%= form_with(model: @article, local: true) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field">
+		<%= f.label :subject %>
+		<%= f.text_area :subject %>
+
+		<%= f.label :content %>
+		<%= f.rich_text_area :content %>
+	</div>
+	<%= f.submit "Update", class: "btn btn-primary" %>
+<% end %>
