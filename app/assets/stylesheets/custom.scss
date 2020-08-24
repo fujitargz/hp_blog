@@ -54,6 +54,14 @@ h2 {
   color: $gray-light;
 }
 
+h3 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+	margin: 20px 0;
+  font-weight: normal;
+  color: $gray-light;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -178,13 +186,13 @@ input {
 }
 
 #session_remember_me {
-  width: auto;
-  margin-left: 0;
+	margin-left: 0;
+	width: auto;
 }
 
 #user_admin {
-  width: auto;
-  margin-left: 0;
+	margin-left: 0;
+	width: auto;
 }
 
 /* Users index */
@@ -204,9 +212,10 @@ input {
 .articles {
 	list-style: none;
 	padding: 0;
+	margin-bottom: 10px;
+	border: 1px solid #e8e8e8;
 	li {
 		padding: 10px 0;
-		border-top: 1px solid #e8e8e8;
 	}
 	.user {
 		margin-top: 5em;
@@ -214,16 +223,12 @@ input {
 	}
 	.subject {
 		display: block;
-		margin-left: 60px;
-		img {
-			display: block;
-			padding: 5px 0;
-		}
+		margin-left: 20px;
 	}
 	.timestamp {
 		color: $gray-light;
 		display: block;
-		margin-left: 60px;
+		text-align: right;
 	}
 }
 
@@ -231,12 +236,5 @@ aside {
 	textarea {
 		height: 100px;
 		margin-bottom: 5px;
-	}
-}
-
-span.image {
-	margin-top: 10px;
-	input {
-		border: 0;
 	}
 }
