@@ -1,10 +1,10 @@
-<li id="article-<%= article.id %>">
-	<span class="user"><%= link_to article.user.name, article.user %></span>
-	<span class="subject"><%= link_to article.subject, article %></span>
+<li class="articles">
+	<span class="subject"><h3><%= link_to article.subject, article %></h3></span>
 	<span class="timestamp">
 		Posted <%= time_ago_in_words(article.created_at) %> ago.
 		<% if current_user?(article.user) %>
-			<%= link_to "delete", article, method: :delete, data: { confirm: "You sure?" } %>
+			<%= link_to "edit", edit_article_path(article) %>
+			<%= link_to "delete", article, method: :delete, data: { confirm: "記事を削除しますか？" } %>
 		<% end %>
 	</span>
 </li>
