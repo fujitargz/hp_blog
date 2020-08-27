@@ -1,4 +1,8 @@
 <% provide(:title, "Show article") %>
 
 <h1><%= @article.subject %></h1>
+<ul>
+	<% @article.tag_list.each do |tag| %>
+		<li><%= tag %></li>
+	<% end %>
 <p><%= @article.content %></p>

@@ -28,6 +28,16 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 	end
 
+	def update
+		@article = Article.find(params[:id])
+		if @article.update(article_params)
+			flash[:success] = "記事を更新しました。"
+			redirect_to root_url
+		else
+			render 'edit'
+		end
+	end
+
 	def show
 		@article = Article.find(params[:id])
 	end
@@ -41,7 +51,7 @@ class ArticlesController < ApplicationController
 	private
 
 		def article_params
-			params.require(:article).permit(:subject, :content)
+			params.require(:article).permit(:subject, :content, :tag_list)
 		end
 
 		def correct_user
