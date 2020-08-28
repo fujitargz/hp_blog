@@ -3,7 +3,12 @@ class ArticlesController < ApplicationController
 	before_action :correct_user, only: :destroy
 
 	def index
-		@articles = Article.paginate(page: params[:page])
+		@tags = Article.tags_on(:tags)
+		if params[:tag]
+			@articles = Article.tagged_with(params[:tag]).paginate(page: params[:page])
+		else
+			@articles = Article.paginate(page: params[:page])
+		end
 	end
 
 	def create
