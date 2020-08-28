@@ -1,13 +1,13 @@
 <%= form_with(model: @user, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :name %>
+  <%= f.label :name, "ユーザ名" %>
   <%= f.text_field :name, class: 'form-control' %>
 
-  <%= f.label :password %>
+  <%= f.label :password, "パスワード" %>
   <%= f.password_field :password, class: 'form-control' %>
 
-  <%= f.label :password_confirmation %>
+  <%= f.label :password_confirmation, "パスワード(確認のため再度入力してください)" %>
   <%= f.password_field :passowr_confirmation, class: 'form-control' %>
 
 	<%= f.label :admin, class: "checkbox inline" do %>

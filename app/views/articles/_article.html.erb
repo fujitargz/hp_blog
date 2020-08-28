@@ -1,11 +1,17 @@
 <li id="article-<%= article.id %>">
-	<span class="user"><%= link_to article.user.name, article.user %></span>
 	<span class="subject"><%= link_to article.subject, article %></span>
-	<% article.tag_list.each do |tag| %>
-		<%= tag %>
-	<% end %>
+	<span class="tag">
+		<ul>
+			<% article.tag_list.each do |tag| %>
+				<li><%= tag %></li>
+			<% end %>
+		</ul>
+	</span>
+	<span class="user"><%= link_to article.user.name, article.user %></span>
 	<span class="timestamp">
-		Posted <%= time_ago_in_words(article.created_at) %> ago.
+		<%= article.created_at.strftime('%Y/%m/%d') %>
+	</span>
+	<span class="edit">
 		<% if current_user?(article.user) %>
 			<%= link_to "edit", edit_article_path(article) %>
 			<%= link_to "delete", article, method: :delete, data: { confirm: "you sure?" } %>

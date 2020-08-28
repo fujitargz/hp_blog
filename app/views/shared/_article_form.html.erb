@@ -1,14 +1,14 @@
 <%= form_with(model: @article, local: true) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	<div class="field">
-		<%= f.label :subject %>
+		<%= f.label :subject, "タイトル" %>
 		<%= f.text_area :subject, class: "form-control"%>
 
-		<%= f.label :tag_list, 'Tags' %>
-		<%= f.text_field :tag_list, placeholder: "tag1,tag2,...", class: "form-control" %>
+		<%= f.label :tag_list, "タグ" %>
+		<%= f.text_field :tag_list, value: @article.tag_list.join(','), placeholder: "tag1,tag2,...", class: "form-control" %>
 
-		<%= f.label :content %>
+		<%= f.label :content, "本文" %>
 		<%= f.rich_text_area :content, class: "form-control" %>
 	</div>
-	<%= f.submit "Post", class: "btn btn-primary" %>
+	<%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
