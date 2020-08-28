@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
-	before_action :logged_in_user, only: [:index, :new, :create, :destroy]
-	before_action :correct_user, only: :destroy
+	before_action :logged_in_user
+	before_action :correct_user, only: [:edit, :destroy]
+	before_action :admin_user, except: [:index, :show]
 
 	def index
 		@tags = Article.tags_on(:tags)
@@ -51,7 +52,7 @@ class ArticlesController < ApplicationController
 	def destroy
 		@article.destroy
 		flash[:success] = "記事を削除しました。"
-		redirect_to request.referrer || roor_url
+		redirect_to root_url
 	end
 
 	private
@@ -60,8 +61,20 @@ class ArticlesController < ApplicationController
 			params.require(:article).permit(:subject, :content, :tag_list)
 		end
 
+		def logged_in_user
+			unless logged_in?
+				store_location
+				flash[:danger] = "ログインが必要なコンテンツです。"
+				redirect_to login_url
+			end
+		end
+
 		def correct_user
 			@article = current_user.articles.find_by(id: params[:id])
 			redirect_to root_url if @article.nil?
+		end
+
+		def admin_user
+			redirect_to(root_url) unless current_user.admin?
 		end
 end
