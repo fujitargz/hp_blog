@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
 	def create
 		@article = current_user.articles.build(article_params)
 		if @article.save
-			flash[:success] = "Article created!"
+			flash[:success] = "記事を作成しました。"
 			redirect_to root_url
 		else
 			@feed_items = current_user.feed.paginate(page: params[:page])
@@ -31,6 +31,7 @@ class ArticlesController < ApplicationController
 
 	def edit
 		@article = Article.find(params[:id])
+		@all_tags = Article.tags_on(:tags)
 	end
 
 	def update
@@ -49,7 +50,7 @@ class ArticlesController < ApplicationController
 
 	def destroy
 		@article.destroy
-		flash[:success] = "Article deleted"
+		flash[:success] = "記事を削除しました。"
 		redirect_to request.referrer || roor_url
 	end
 
