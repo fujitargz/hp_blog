@@ -1,20 +1,11 @@
-<li id="article-<%= article.id %>">
-	<span class="subject"><%= link_to article.subject, article %></span>
-	<span class="tag">
-		<ul>
-			<% article.tag_list.each do |tag| %>
-				<li><%= tag %></li>
-			<% end %>
-		</ul>
+<a href=<%= article_path(article) %> class="articles list-group-item list-group-item-action">
+	<div class="subject"><%= article.subject %></div>
+	<span class="tags">
+		<% article.tag_list.each do |tag| %>
+			<span class="tag"><%= tag %></span>
+		<% end %>
 	</span>
-	<span class="user"><%= link_to article.user.name, article.user %></span>
 	<span class="timestamp">
 		<%= article.created_at.strftime('%Y/%m/%d') %>
 	</span>
-	<span class="edit">
-		<% if current_user?(article.user) %>
-			<%= link_to "edit", edit_article_path(article) %>
-			<%= link_to "delete", article, method: :delete, data: { confirm: "you sure?" } %>
-		<% end %>
-	</span>
-</li>
+</a>

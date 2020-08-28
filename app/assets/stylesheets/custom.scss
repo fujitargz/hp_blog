@@ -199,31 +199,41 @@ input {
   }
 }
 
-/* articles */
+/* article(aticle#show) */
+
+.article {
+	.user {
+		font-size: 1.3em;
+	}
+	.tags {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.content {
+		margin-top: 50px;
+		font-size: 1.2em;
+	}
+}
+
+/* articles(article#index) */
 
 .articles {
-	list-style: none;
-	padding: 0;
-	li {
-		padding: 10px 0;
-		border-top: 1px solid #e8e8e8;
-	}
-	.user {
-		margin-top: 5em;
-		padding-top: 0;
-	}
 	.subject {
 		display: block;
-		margin-left: 60px;
-		img {
-			display: block;
-			padding: 5px 0;
+		font-size: 1.5em;
+	}
+	.tags {
+		color: $gray-light;
+		margin-left: 30px;
+		.tag {
+			background-color: $gray-medium-light;
+			border: 2px solid $gray-lighter;
+			border-radius: 5px;
 		}
 	}
 	.timestamp {
 		color: $gray-light;
-		display: block;
-		margin-left: 60px;
+		float: right;
 	}
 }
 

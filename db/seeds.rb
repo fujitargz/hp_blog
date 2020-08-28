@@ -8,3 +8,5 @@
 
 # メインのサンプルユーザを一人作成する
 User.create!(name: "Default Admin", password: "kougakusai2020", password_confirmation: "kougakusai2020", admin: true)
+User.create!(name: "Example Admin", password: "password",       password_confirmation: "password",       admin: true)
+User.create!(name: "Example User",  password: "password",       password_confirmation: "password")
