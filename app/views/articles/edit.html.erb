@@ -5,13 +5,13 @@
 	<%= render 'shared/error_messages', object: f.object %>
 	<div class="field">
 		<%= f.label :subject %>
-		<%= f.text_area :subject %>
+		<%= f.text_area :subject, class: "form-control" %>
 
 		<%= f.label :tag_list %>
-		<%= f.text_field :tag_list, class: "form-control" %>
+		<%= f.text_field :tag_list , value: @article.tag_list.join(','), class: "form-control" %>
 
 		<%= f.label :content %>
-		<%= f.rich_text_area :content %>
+		<%= f.rich_text_area :content, class: "form-control" %>
 	</div>
 	<%= f.submit "Update", class: "btn btn-primary" %>
 <% end %>
