@@ -1,8 +1,21 @@
 <% provide(:title, "#{@article.subject}") %>
 
 <h1><%= @article.subject %></h1>
-<ul>
-	<% @article.tag_list.each do |tag| %>
-		<li><%= tag %></li>
+<div class=article>
+	<div class="user">
+		<%= @article.user.name %>
+	</div>
+	<div class="tags nav">
+		<span class="nav-item">Tags:</span>
+		<% @article.tag_list.each do |tag| %>
+			<span class="nav-item"><%= tag %></span>
+		<% end %>
+	</div>
+	<% if current_user?(@article.user) %>
+		<%= link_to "編集", edit_article_path(@article), class: "btn btn-primary" %>
+		<%= link_to "削除", @article, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-primary" %>
 	<% end %>
-<p><%= @article.content %></p>
+	<div class=content>
+		<%= @article.content %>
+	</div>
+</div>

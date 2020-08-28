@@ -1,16 +1,21 @@
 <% provide(:title, 'Home') %>
 <h1>こうがく祭HP村通信</h1>
 <h2>記事一覧</h2>
-<p>タグ</p>
-<ul>
-	<li><%= link_to "all", root_path %></li>
+<nav class="nav nav-pills">
+	<li class="nav-item">
+		<%= link_to "All", root_path, class: "nav-link" %>
+	</li>
 	<% @tags.each do |tag| %>
-		<li><%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.name) %></li>
+		<li class="nav-item">
+			<%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.name), class: "nav-link" %>
+		</li>
 	<% end %>
-</ul>
+</nav>
 
 <%= will_paginate %>
 
-<%= render @articles %>
+<div class="list-group">
+	<%= render @articles %>
+</div>
 
 <%= will_paginate %>
