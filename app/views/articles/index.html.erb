@@ -1,21 +1,27 @@
 <% provide(:title, 'Home') %>
-<h1>こうがく祭HP村通信</h1>
-<h2>記事一覧</h2>
-<nav class="nav nav-pills">
-	<li class="nav-item">
-		<%= link_to "全てのタグ", root_path, class: "nav-link" %>
-	</li>
-	<% @tags.each do |tag| %>
-		<li class="nav-item">
-			<%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.name), class: "nav-link" %>
-		</li>
+<%= tag.div class: 'row justify-content-center' do %>
+	<%= tag.h1 "記事一覧", class: 'col-auto' %>
+<% end %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
+	<%= tag.div class: 'col-md-8 col-lg-10' do %>
+		<%= tag.nav class: 'nav nav-pills mx-1' do %>
+			<%= tag.li class: 'nav-item' do %>
+				<%= link_to "全てのタグ", root_path, class: "nav-link" %>
+			<% end %>
+			<% @tags.each do |tags| %>
+				<%= tag.li class: 'nav-item' do %>
+					<%= link_to "#{tags.name}(#{tags.taggings_count})", tag_path(tags.name), class: "nav-link" %>
+				<% end %>
+			<% end %>
+		<% end %>
 	<% end %>
-</nav>
-
-<%= will_paginate %>
-
-<div class="list-group">
-	<%= render @articles %>
-</div>
-
-<%= will_paginate %>
+<% end %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
+	<%= tag.div class: 'col-md-8 col-lg-10' do %>
+		<%= will_paginate %>
+		<%= tag.div class: 'list-group mx-1' do %>
+			<%= render @articles %>
+		<% end %>
+		<%= will_paginate %>
+	<% end %>
+<% end %>

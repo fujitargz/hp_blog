@@ -10,6 +10,7 @@ ja:
         updated_at: 更新日時
         name: ユーザ名
         password: パスワード
+        password_confirmation: 再入力パスワード
       article:
         id: ID
         created_at: 作成日時

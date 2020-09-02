@@ -1,17 +1,19 @@
 <% provide(:title, "New") %>
 <% provide(:button_text, "投稿") %>
-<h1>記事を作成</h1>
-<div class="row">
-	<aside class="col-md-8">
-		<section class="user_info">
+<%= tag.div class: 'row justify-content-center mx-1' do %>
+	<%= tag.h1 "記事を作成", class: 'col-auto' %>
+<% end %>
+<%= tag.div class: 'row mx-1' do %>
+	<%= tag.div class: 'col-xs-12 col-md-8  col-lg-6 offset-lg-2' do %>
+		<%= tag.div class: 'border border-top-0 border-left-0 border-right-0 py-2' do %>
 			<%= render 'shared/user_info' %>
-		</section>
-		<section class="article_form">
+		<% end %>
 			<%= render 'shared/article_form' %>
-		</section>
-	</aside>
-	<div class="col-md-4">
-		<h3>今までの投稿</h3>
+	<% end %>
+	<%= tag.div class: 'col-xs-12 col-md-4 col-lg-2' do %>
+		<%= tag.div class: 'my-2' do %>
+			<%= tag.h3 "今までの投稿" %>
+		<% end %>
 		<%= render 'shared/feed' %>
-	</div>
-</div>
+	<% end %>
+<% end %>

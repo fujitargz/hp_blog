@@ -1,11 +1,17 @@
-<a href=<%= article_path(article) %> class="articles list-group-item list-group-item-action">
-	<div class="subject"><%= article.subject %></div>
-	<span class="tags">
-		<% article.tag_list.each do |tag| %>
-			<span class="tag"><%= tag %></span>
+<%= link_to article_path(article), class: 'list-group-item list-group-item-action' do %>
+	<%= tag.div do %>
+		<%= tag.h4 do %>
+			<%= article.subject %>
 		<% end %>
-	</span>
-	<span class="timestamp">
+	<% end %>
+	<%= tag.div do %>
+		<% article.tag_list.each do |tags| %>
+			<%= tag.span class: 'border mx-1 bg-light' do %>
+				<%= tags %>
+			<% end %>
+		<% end %>
+	<% end %>
+	<%= tag.div do %>
 		<%= article.created_at.strftime('%Y/%m/%d') %>
-	</span>
-</a>
+	<% end %>
+<% end %>
