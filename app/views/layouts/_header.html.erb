@@ -1,27 +1,16 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "こうがく祭HP村通信", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-				<% if logged_in? %>
-        	<li class="dropdown">
-          	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            	メニュー <b class="caret"></b>
-          	</a>
-          	<ul class="dropdown-menu">
-        			<li><%= link_to "ログアウト", logout_path, method: :delete %></li>
-            	<li class="divider"></li>
-							<li><%= link_to "記事一覧", root_path %></li>
-								<% if current_user.admin? %>
-            		<li class="divider"></li>
-            		<li><%= link_to "ユーザ一覧", users_path %></li>
-            		<li class="divider"></li>
-            		<li><%= link_to "マイページ", current_user %></li>
-							<% end %>
-          	</ul>
-					</li>
+<%= tag.header class: 'navbar navbar-fixed-top navbar-expand-md bg-primary' do %>
+	<%= link_to "こうがく祭HP村通信", root_path, id: "logo", class: "navbar-brand text-light mx-5" %>
+	<%= tag.button  "メニュー", class: 'navbar-toggler text-light', type: 'button', data: { toggle: 'collapse', target: '#collapse-items' } %>
+	<%= tag.div class: 'collapse navbar-collapse', id: 'collapse-items' do %>
+		<%= tag.div class: 'navbar-nav' do %>
+			<% if logged_in? %>
+				<%= link_to "ログアウト", logout_path, method: :delete, class: 'nav-item nav-link text-light' %>
+				<%= link_to "記事一覧", root_path, class: 'nav-item nav-link text-light' %>
+				<% if current_user.admin? %>
+					<%= link_to "ユーザ一覧", users_path, class: 'nav-item nav-link text-light' %>
+					<%= link_to "マイページ", current_user, class: 'nav-item nav-link text-light' %>
 				<% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>

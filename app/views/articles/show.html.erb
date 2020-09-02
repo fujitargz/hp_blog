@@ -1,21 +1,35 @@
 <% provide(:title, "#{@article.subject}") %>
-
-<h1><%= @article.subject %></h1>
-<div class=article>
-	<div class="user">
-		<%= @article.user.name %>
-	</div>
-	<div class="tags nav">
-		<span class="nav-item">Tags:</span>
-		<% @article.tag_list.each do |tag| %>
-			<span class="nav-item"><%= tag %></span>
-		<% end %>
-	</div>
-	<% if current_user?(@article.user) && current_user.admin? %>
-		<%= link_to "編集", edit_article_path(@article), class: "btn btn-primary" %>
-		<%= link_to "削除", @article, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-primary" %>
+<%= tag.div class: 'row justify-content-center' do %>
+	<%= tag.h1 class: 'col-auto' do %>
+		<%= @article.subject %>
 	<% end %>
-	<div class=content>
+<% end %>
+<%= tag.div class: 'row justify-content-center mx-1 my-2' do %>
+	<%= tag.div class: 'col-md-8 col-lg-10 border border-top-0 border-left-0 border-right-0 pb-1' do %>
+		<%= tag.div do %>
+			<%= @article.user.name %>
+		<% end %>
+		<%= tag.div class: 'nav' do %>
+			<%= tag.span "タグ:", class: 'nav-item' %>
+			<% @article.tag_list.each do |tags| %>
+				<%= tag.span class: 'nav-item ml-1' do %>
+					<%= tags %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<%= tag.div class: 'row justify-content-center mx-1 my-1' do %>
+	<%= tag.div class: 'col-md-8 col-lg-10' do %>
+		<% if current_user?(@article.user) && current_user.admin? %>
+			<%= link_to "編集", edit_article_path(@article), class: "btn btn-primary" %>
+			<%= link_to "削除", @article, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-primary" %>
+		<% end %>
+	<% end %>
+<% end %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
+	<%= tag.div class: 'col-md-8 col-lg-10' do %>
 		<%= @article.content %>
-	</div>
-</div>
+	<% end %>
+<% end %>

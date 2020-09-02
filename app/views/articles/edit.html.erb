@@ -1,8 +1,16 @@
 <% provide(:title, "Update") %>
 <% provide(:button_text, '更新') %>
-<h1>記事を編集</h1>
+<%= tag.div class: 'row justify-content-center' do %>
+	<%= tag.div class: 'col-auto' do %>
+		<%= tag.h1 "記事を編集" %>
+	<% end %>
+<% end %>
 
-<%= form_with(model: @article, local: true) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
-	<%= render 'shared/article_form' %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
+	<%= tag.div class: 'col-md-8 col-lg-10' do %>
+		<%= form_with(model: @article, local: true) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<%= render 'shared/article_form' %>
+		<% end %>
+	<% end %>
 <% end %>

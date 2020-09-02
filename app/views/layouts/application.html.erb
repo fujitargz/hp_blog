@@ -10,14 +10,22 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-      <% end %>
+		<%= tag.div class: 'container-flood' do %>
+    	<%= render 'layouts/header' %>
+		<% end %>
+		<%= tag.div class: 'container-flood pt-3' do %>
+			<%= tag.div class: 'col-auto mx-1' do %>
+      	<% flash.each do |message_type, message| %>
+        	<%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      	<% end %>
+			<% end %>
       <%= yield %>
-      <%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
-    </div>
+			<%= tag.div do %>
+      	<%= render 'layouts/footer' %>
+				<%= tag.div class: 'mx-5 px-5' do %>
+      		<%= debug(params) if Rails.env.development? %>
+				<% end %>
+			<% end %>
+		<% end %>
   </body>
 </html>

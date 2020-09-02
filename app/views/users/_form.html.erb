@@ -1,19 +1,25 @@
 <%= form_with(model: @user, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :name, "ユーザ名" %>
-  <%= f.text_field :name, class: 'form-control' %>
-
-  <%= f.label :password, "パスワード" %>
-  <%= f.password_field :password, class: 'form-control' %>
-
-  <%= f.label :password_confirmation, "パスワード(確認のため再度入力してください)" %>
-  <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-	<%= f.label :admin, class: "checkbox inline" do %>
-		<%= f.check_box :admin %>
-		<span>管理者権限を付与する</span>
+	<%= tag.div class: 'form-group mt-2 col-auto' do %>
+  	<%= f.label :name, "ユーザ名" %>
+  	<%= f.text_field :name, class: 'form-control' %>
 	<% end %>
 
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+	<%= tag.div class: 'form-group mt-2 col-auto' do %>
+  	<%= f.label :password, "パスワード" %>
+  	<%= f.password_field :password, class: 'form-control' %>
+	<% end %>
+
+	<%= tag.div class: 'form-group mt-2 col-auto' do %>
+  	<%= f.label :password_confirmation, "パスワード(確認のため再度入力してください)" %>
+  	<%= f.password_field :password_confirmation, class: 'form-control' %>
+	<% end %>
+
+	<%= tag.div class: 'form-check mt-2 col-auto' do %>
+		<%= f.label :admin, "管理者権限を付与する", class: 'form-check-label' %>
+		<%= f.check_box :admin, class: 'form-check-input' %>
+	<% end %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block mt-3 col-auto" %>
 <% end %>

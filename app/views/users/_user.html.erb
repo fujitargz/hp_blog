@@ -1,9 +1,9 @@
-<li>
-  <%= link_to user.name, user %>
+<%= tag.div class: 'list-group-item list-group-item-action' do %>
+	<%= link_to user.name, user %>
 	<% if current_user.admin? %>
 		<% if !user.admin? || current_user == user %>
-    	| <%= link_to "編集", edit_user_path(user) %>
-    	| <%= link_to "削除", user, method: :delete, data: { confirm: "ユーザを削除しますか？" } %>
+    	<%= link_to "編集", edit_user_path(user), class: 'btn btn-primary ml-2' %>
+    	<%= link_to "削除", user, class: 'btn btn-primary ml-1', method: :delete, data: { confirm: "ユーザを削除しますか？" } %>
 		<% end %>
   <% end %>
-</li>
+<% end %>
