@@ -7,7 +7,7 @@
 <% end %>
 
 <%= tag.div class: 'row justify-content-center mx-1' do %>
-	<%= tag.div class: 'col-md-8 col-lg-10' do %>
+	<%= tag.div class: 'col-lg-8' do %>
 		<%= form_with(model: @article, local: true) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
 			<%= render 'shared/article_form' %>
