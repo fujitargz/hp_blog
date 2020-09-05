@@ -1,5 +1,5 @@
 <% provide(:title, 'Users') %>
-<%= tag.div class: 'row justify-content-center' do %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
 	<%= tag.h1 "ユーザ一覧", class: 'col-auto' %>
 <% end %>
 
@@ -8,10 +8,10 @@
 		<%= link_to "新規ユーザを作成", signup_path, class: 'btn btn-primary' %>
 	<% end %>
 <% end %>
-<%= tag.div class: 'row justify-content-center my-1' do %>
+<%= tag.div class: 'row justify-content-center mx-1 my-1' do %>
 	<%= tag.div class: 'col-lg-8' do %>
 		<%= will_paginate %>
-		<%= tag.div class: 'list-group mx-1' do %>
+		<%= tag.div class: 'list-group' do %>
   		<%= render @users %>
 		<% end %>
 		<%= will_paginate %>

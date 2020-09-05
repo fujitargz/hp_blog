@@ -6,9 +6,9 @@ class ArticlesController < ApplicationController
 	def index
 		@tags = Article.tags_on(:tags)
 		if params[:tag]
-			@articles = Article.tagged_with(params[:tag]).paginate(page: params[:page])
+			@articles = Article.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 10)
 		else
-			@articles = Article.paginate(page: params[:page])
+			@articles = Article.paginate(page: params[:page], per_page: 10)
 		end
 	end
 
@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
 			flash[:success] = "記事を作成しました。"
 			redirect_to root_url
 		else
-			@feed_items = current_user.feed.paginate(page: params[:page])
+			@feed_items = current_user.feed.paginate(page: params[:page], per_page: 10)
 			render 'articles#new'
 		end
 	end
@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
 	def new
 		if logged_in?
 		@article = current_user.articles.build
-		@feed_items = current_user.feed.paginate(page: params[:page])
+		@feed_items = current_user.feed.paginate(page: params[:page], per_page: 10)
 		end
 	end
 
