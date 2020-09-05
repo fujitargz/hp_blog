@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-<%= tag.div class: 'row justify-content-center' do %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
 	<%= tag.h1 class: 'col-auto' do %>
 		<%= @user.name %>
 	<% end %>
@@ -17,7 +17,7 @@
 			<%= tag.h3 do %>
 				投稿した記事 (<%= @user.articles.count %>)
 			<% end %>
-			<%= tag.div class: 'list-group mx-1' do %>
+			<%= tag.div class: 'list-group' do %>
 				<%= render @articles %>
 			<% end %>
 			<%= will_paginate @articles %>
