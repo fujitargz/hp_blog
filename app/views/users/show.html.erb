@@ -1,0 +1,26 @@
+<% provide(:title, @user.name) %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
+	<%= tag.h1 class: 'col-auto' do %>
+		<%= @user.name %>
+	<% end %>
+<% end %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
+	<%= tag.div class: 'col-lg-8' do %>
+		<% if current_user == @user %>
+			<%= link_to "新規記事を作成", new_article_path, class: 'btn btn-primary' %>
+		<% end %>
+	<% end %>
+<% end %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
+	<%= tag.div class: 'col-lg-8' do %>
+		<% if @user.articles.any? %>
+			<%= tag.h3 do %>
+				投稿した記事 (<%= @user.articles.count %>)
+			<% end %>
+			<%= tag.div class: 'list-group' do %>
+				<%= render @articles %>
+			<% end %>
+			<%= will_paginate @articles %>
+		<% end %>
+	<% end %>
+<% end %>

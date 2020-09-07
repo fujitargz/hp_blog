@@ -1,0 +1,26 @@
+<% provide(:title, 'Home') %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
+	<%= tag.h1 "記事一覧", class: 'col-auto' %>
+<% end %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
+	<%= tag.div class: 'col-lg-8' do %>
+		<%= tag.nav class: 'nav nav-pills' do %>
+			<%= tag.li class: 'nav-item' do %>
+				<%= link_to "全てのタグ", root_path, class: "nav-link" %>
+			<% end %>
+			<% @tags.each do |tags| %>
+				<%= tag.li class: 'nav-item' do %>
+					<%= link_to "#{tags.name}(#{tags.taggings_count})", tag_path(tags.name), class: "nav-link" %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
+<%= tag.div class: 'row justify-content-center mx-1' do %>
+	<%= tag.div class: 'col-lg-8' do %>
+		<%= tag.div class: 'list-group' do %>
+			<%= render @articles %>
+		<% end %>
+		<%= will_paginate %>
+	<% end %>
+<% end %>
