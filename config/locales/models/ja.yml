@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザ
+      article: 記事
+    attributes:
+      user:
+        id: ID
+        created_at: 作成日時
+        updated_at: 更新日時
+        name: ユーザ名
+        password: パスワード
+        password_confirmation: 再入力パスワード
+      article:
+        id: ID
+        created_at: 作成日時
+        updated_at: 更新日時
+        user_id: ユーザID
+        subject: タイトル
+        content: 本文

@@ -1,0 +1,19 @@
+<%= form_with(model: @article, local: true) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<%= tag.div class: 'form-group mt-2 col-auto' do %>
+		<%= f.label :subject, "タイトル" %>
+		<%= f.text_area :subject, class: "form-control"%>
+	<% end %>
+
+	<%= tag.div class: 'form-group mt-2 col-auto' do %>
+		<%= f.label :tag_list, "タグ" %>
+		<%= f.text_field :tag_list, value: @article.tag_list.join(','), placeholder: "tag1,tag2,...", class: "form-control" %>
+	<% end %>
+
+	<%= tag.div class: 'form-group mt-2 col-auto' do %>
+		<%= f.label :content, "本文" %>
+		<%= f.rich_text_area :content %>
+	<% end %>
+
+	<%= f.submit yield(:button_text), class: "btn btn-primary btn-block mt-3 col-auto" %>
+<% end %>
