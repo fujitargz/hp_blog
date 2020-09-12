@@ -4,23 +4,25 @@
 <% end %>
 <%= tag.div class: 'row justify-content-center mx-1' do %>
 	<%= tag.div class: 'col-lg-8' do %>
-		<%= tag.nav class: 'nav nav-pills' do %>
-			<%= tag.li class: 'nav-item' do %>
-				<%= link_to "全てのタグ", root_path, class: "nav-link" %>
-			<% end %>
-			<% @tags.each do |tags| %>
-				<%= tag.li class: 'nav-item' do %>
-					<%= link_to "#{tags.name}(#{tags.taggings_count})", tag_path(tags.name), class: "nav-link" %>
-				<% end %>
-			<% end %>
-		<% end %>
-	<% end %>
-<% end %>
-<%= tag.div class: 'row justify-content-center mx-1' do %>
-	<%= tag.div class: 'col-lg-8' do %>
 		<%= tag.div class: 'list-group' do %>
 			<%= render @articles %>
 		<% end %>
 		<%= will_paginate %>
+	<% end %>
+	<%= tag.div class: 'col-lg-2' do %>
+		<%= tag.div class: 'border rounded' do %>
+			<%= tag.h4 "タグ", class: 'mx-1 my-1' %>
+			<%= tag.ul class: 'list-unstyled mx-2' do %>
+				<% @tags.each do |tags| %>
+					<%= tag.li do %>
+						<%= link_to "#{tags.name}(#{tags.taggings_count})", tag_path(tags.name) %>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+		<%= tag.div do %>
+			<a class="twitter-timeline" href="https://twitter.com/2020kougakusai?ref_src=twsrc%5Etfw" data-height="600">Tweets by 2020kougakusai</a>
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<% end %>
 	<% end %>
 <% end %>
