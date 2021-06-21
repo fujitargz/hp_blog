@@ -2,8 +2,15 @@
 
 one:
   subject: firstArticle
-  user: firstUser
+  created_at: <%= 10.minutes.ago %>
+  user: one
 
 two:
   subject: secondArticle
-  user: secondUser
+  created_at: <%= 5.minutes.ago %>
+  user: one
+
+most_recent:
+  subject: mostRecent
+  created_at: <%= Time.zone.now %>
+  user: one
