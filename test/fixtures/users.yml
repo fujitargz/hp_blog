@@ -2,6 +2,10 @@
 
 one:
   name: firstUser
+  password_digest: <%= User.digest('password') %>
+  admin: true
 
 two:
   name: secondUser
+  password_digest: <%= User.digest('password') %>
+  admin: false
