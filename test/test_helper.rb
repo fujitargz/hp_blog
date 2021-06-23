@@ -13,10 +13,21 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 
-  include ApplicationHelper
-
   # テストユーザがログイン中の場合にtrueを返す
   def is_logged_in?
     !session[:user_id].nil?
+  end
+
+  # テストユーザでログイン
+  def log_in_as(user)
+    session[:user_id] = user.id
+  end
+end
+
+class ActionDispatch::IntegrationTest
+
+  # テストユーザでログイン
+  def log_in_as(user, password: 'password', remember_me: '1')
+    post login_path, params: { session: { name: user.name, password: password, remember_me: remember_me } }
   end
 end
